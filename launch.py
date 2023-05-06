@@ -325,7 +325,7 @@ def tests(test_dir):
     if "--no-tests" not in sys.argv:
         sys.argv.append("--no-tests")
 
-    print(f"Launching Web UI in another process for testing with arguments: {' '.join(sys.argv[1:])}")
+    print(f"Launching startfk in another process for testing with arguments: {' '.join(sys.argv[1:])}")
 
     os.environ['COMMANDLINE_ARGS'] = ""
     with open(os.path.join(script_path, 'test/stdout.txt'), "w", encoding="utf8") as stdout, open(os.path.join(script_path, 'test/stderr.txt'), "w", encoding="utf8") as stderr:
@@ -334,14 +334,14 @@ def tests(test_dir):
     import test.server_poll
     exitcode = test.server_poll.run_tests(proc, test_dir)
 
-    print(f"Stopping Web UI process with id {proc.pid}")
+    print(f"Stopping startfk process with id {proc.pid}")
     proc.kill()
     return exitcode
 
 
 def start():
-    print(f"Launching {'API server' if '--nostartfk' in sys.argv else 'Web UI'} with arguments: {' '.join(sys.argv[1:])}")
-    import startfk
+    print(f"Launching {'API server' if '--nostartfk' in sys.argv else 'startfk'} with arguments: {' '.join(sys.argv[1:])}")
+    import start
     if '--nostartfk' in sys.argv:
         startfk.api_only()
     else:
