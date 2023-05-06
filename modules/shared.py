@@ -272,7 +272,7 @@ options_templates.update(options_section(('saving-images', "Saving images/grids"
     "save_init_img": OptionInfo(False, "Save init images when using img2img"),
 
     "temp_dir":  OptionInfo("", "Directory for temporary images; leave empty for default"),
-    "clean_temp_dir_at_start": OptionInfo(False, "Cleanup non-default temporary directory when starting webui"),
+    "clean_temp_dir_at_start": OptionInfo(False, "Cleanup non-default temporary directory when starting startfk"),
 
 }))
 

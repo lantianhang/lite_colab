@@ -174,7 +174,7 @@ current_basedir = paths.script_path
 
 def basedir():
     """returns the base directory for the current script. For scripts in the main scripts directory,
-    this is the main directory (where webui.py resides), and for scripts in extensions directory
+    this is the main directory (where startfk.py resides), and for scripts in extensions directory
     (ie extensions/aesthetic/script/aesthetic.py), this is extension's directory (extensions/aesthetic)
     """
     return current_basedir
@@ -240,7 +240,7 @@ def load_scripts():
                 postprocessing_scripts_data.append(ScriptClassData(script_class, scriptfile.path, scriptfile.basedir, module))
 
     def orderby(basedir):
-        # 1st webui, 2nd extensions-builtin, 3rd extensions
+        # 1st startfk, 2nd extensions-builtin, 3rd extensions
         priority = {os.path.join(paths.script_path, "extensions-builtin"):1, paths.script_path:0}
         for key in priority:
             if basedir.startswith(key):

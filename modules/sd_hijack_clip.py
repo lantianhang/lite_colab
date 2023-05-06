@@ -201,7 +201,7 @@ class FrozenCLIPEmbedderWithCustomWordsBase(torch.nn.Module):
         Returns a tensor with shape of (B, T, C), where B is length of the array; T is length, in tokens, of texts (including padding) - T will
         be a multiple of 77; and C is dimensionality of each token - for SD1 it's 768, and for SD2 it's 1024.
         An example shape returned by this function can be: (2, 77, 768).
-        Webui usually sends just one text at a time through this function - the only time when texts is an array with more than one elemenet
+        startfk usually sends just one text at a time through this function - the only time when texts is an array with more than one elemenet
         is when you do prompt editing: "a picture of a [cat:dog:0.4] eating ice cream"
         """
 

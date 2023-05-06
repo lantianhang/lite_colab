@@ -1,5 +1,5 @@
 """
-Supports saving and restoring webui and extensions from a known working set of commits
+Supports saving and restoring startfk and extensions from a known working set of commits
 """
 
 import os
@@ -46,36 +46,36 @@ def list_config_states():
     return all_config_states
 
 
-def get_webui_config():
-    webui_repo = None
+def get_startfk_config():
+    startfk_repo = None
 
     try:
         if os.path.exists(os.path.join(script_path, ".git")):
-            webui_repo = git.Repo(script_path)
+            startfk_repo = git.Repo(script_path)
     except Exception:
-        print(f"Error reading webui git info from {script_path}:", file=sys.stderr)
+        print(f"Error reading startfk git info from {script_path}:", file=sys.stderr)
         print(traceback.format_exc(), file=sys.stderr)
 
-    webui_remote = None
-    webui_commit_hash = None
-    webui_commit_date = None
-    webui_branch = None
-    if webui_repo and not webui_repo.bare:
+    startfk_remote = None
+    startfk_commit_hash = None
+    startfk_commit_date = None
+    startfk_branch = None
+    if startfk_repo and not startfk_repo.bare:
         try:
-            webui_remote = next(webui_repo.remote().urls, None)
-            head = webui_repo.head.commit
-            webui_commit_date = webui_repo.head.commit.committed_date
-            webui_commit_hash = head.hexsha
-            webui_branch = webui_repo.active_branch.name
+            startfk_remote = next(startfk_repo.remote().urls, None)
+            head = startfk_repo.head.commit
+            startfk_commit_date = startfk_repo.head.commit.committed_date
+            startfk_commit_hash = head.hexsha
+            startfk_branch = startfk_repo.active_branch.name
 
         except Exception:
-            webui_remote = None
+            startfk_remote = None
 
     return {
-        "remote": webui_remote,
-        "commit_hash": webui_commit_hash,
-        "commit_date": webui_commit_date,
-        "branch": webui_branch,
+        "remote": startfk_remote,
+        "commit_hash": startfk_commit_hash,
+        "commit_date": startfk_commit_date,
+        "branch": startfk_branch,
     }
 
 
@@ -102,46 +102,46 @@ def get_extension_config():
 
 def get_config():
     creation_time = datetime.now().timestamp()
-    webui_config = get_webui_config()
+    startfk_config = get_startfk_config()
     ext_config = get_extension_config()
 
     return {
         "created_at": creation_time,
-        "webui": webui_config,
+        "startfk": startfk_config,
         "extensions": ext_config
     }
 
 
-def restore_webui_config(config):
-    print("* Restoring webui state...")
+def restore_startfk_config(config):
+    print("* Restoring startfk state...")
 
-    if "webui" not in config:
-        print("Error: No webui data saved to config")
+    if "startfk" not in config:
+        print("Error: No startfk data saved to config")
         return
 
-    webui_config = config["webui"]
+    startfk_config = config["startfk"]
 
-    if "commit_hash" not in webui_config:
-        print("Error: No commit saved to webui config")
+    if "commit_hash" not in startfk_config:
+        print("Error: No commit saved to startfk config")
         return
 
-    webui_commit_hash = webui_config.get("commit_hash", None)
-    webui_repo = None
+    startfk_commit_hash = startfk_config.get("commit_hash", None)
+    startfk_repo = None
 
     try:
         if os.path.exists(os.path.join(script_path, ".git")):
-            webui_repo = git.Repo(script_path)
+            startfk_repo = git.Repo(script_path)
     except Exception:
-        print(f"Error reading webui git info from {script_path}:", file=sys.stderr)
+        print(f"Error reading startfk git info from {script_path}:", file=sys.stderr)
         print(traceback.format_exc(), file=sys.stderr)
         return
 
     try:
-        webui_repo.git.fetch(all=True)
-        webui_repo.git.reset(webui_commit_hash, hard=True)
-        print(f"* Restored webui to commit {webui_commit_hash}.")
+        startfk_repo.git.fetch(all=True)
+        startfk_repo.git.reset(startfk_commit_hash, hard=True)
+        print(f"* Restored startfk to commit {startfk_commit_hash}.")
     except Exception:
-        print(f"Error restoring webui to commit {webui_commit_hash}:", file=sys.stderr)
+        print(f"Error restoring startfk to commit {startfk_commit_hash}:", file=sys.stderr)
         print(traceback.format_exc(), file=sys.stderr)
 
 

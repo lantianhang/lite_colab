@@ -62,7 +62,7 @@ def find_noise_for_image(p, cond, uncond, cfg_scale, steps):
 Cached = namedtuple("Cached", ["noise", "cfg_scale", "steps", "latent", "original_prompt", "original_negative_prompt", "sigma_adjustment"])
 
 
-# Based on changes suggested by briansemrau in https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/736
+# Based on changes suggested by briansemrau 
 def find_noise_for_image_sigma_adjustment(p, cond, uncond, cfg_scale, steps):
     x = p.init_latent
 

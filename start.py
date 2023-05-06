@@ -230,7 +230,7 @@ def initialize():
                 print(f"Invalid path to TLS certfile: '{cmd_opts.tls_certfile}'")
         except TypeError:
             cmd_opts.tls_keyfile = cmd_opts.tls_certfile = None
-            print("TLS setup invalid, running webui without TLS")
+            print("TLS setup invalid, running  without TLS")
         else:
             print("Running with TLS")
         startup_timer.record("TLS")
@@ -287,7 +287,7 @@ def api_only():
     api.launch(server_name="0.0.0.0" if cmd_opts.listen else "127.0.0.1", port=cmd_opts.port if cmd_opts.port else 7861)
 
 
-def webui():
+def startfk():
     launch_api = cmd_opts.api
     initialize()
 
@@ -407,7 +407,7 @@ def webui():
 
 
 if __name__ == "__main__":
-    if cmd_opts.nowebui:
+    if cmd_opts.nostartfk:
         api_only()
     else:
-        webui()
+        startfk()

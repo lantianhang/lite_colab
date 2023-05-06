@@ -58,7 +58,7 @@ class ProgressResponse(BaseModel):
     eta: float = Field(default=None, title="ETA in secs")
     live_preview: str = Field(default=None, title="Live preview image", description="Current live preview; a data: uri")
     id_live_preview: int = Field(default=None, title="Live preview image ID", description="Send this together with next request to prevent receiving same image")
-    textinfo: str = Field(default=None, title="Info text", description="Info text used by WebUI.")
+    textinfo: str = Field(default=None, title="Info text", description="Info text used by startfk.")
 
 
 def setup_progress_api(app):
