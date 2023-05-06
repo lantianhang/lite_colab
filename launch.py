@@ -339,9 +339,9 @@ def tests(test_dir):
     return exitcode
 
 
-def start():
+def startfk():
     print(f"Launching {'API server' if '--nostartfk' in sys.argv else 'startfk'} with arguments: {' '.join(sys.argv[1:])}")
-    import start
+    import startfk
     if '--nostartfk' in sys.argv:
         startfk.api_only()
     else:
@@ -350,4 +350,4 @@ def start():
 
 if __name__ == "__main__":
     prepare_environment()
-    start()
+    startfk()
