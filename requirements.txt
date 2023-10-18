@@ -33,4 +33,4 @@ opencv-contrib-python
 requests
 psutil
 rich
-xformers
+xformers==0.0.20
