@@ -12,12 +12,12 @@ opencv-contrib-python
 requests==2.31.0
 piexif
 Pillow
-pytorch_lightning
+pytorch_lightning==1.7.7
 realesrgan
 scikit-image>=0.19
-timm
+timm==0.4.12
 transformers==4.25.1
-torch
+torch==2.1.0
 einops
 jsonmerge
 clean-fid
