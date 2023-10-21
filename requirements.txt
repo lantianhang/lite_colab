@@ -34,7 +34,7 @@ torchvision==0.15.2
 torchaudio==2.0.2
 astunparse
 opencv-contrib-python
-requests==2.26.0
+requests
 psutil
 rich
 xformers==0.0.20
