@@ -8,6 +8,7 @@ numpy==1.23.5
 Pillow==9.4.0	
 realesrgan==0.3.0	
 omegaconf==2.2.3	
+requests==2.31.0
 pytorch_lightning==2.0.3	
 scikit-image==0.19.2	
 fonts	
@@ -34,7 +35,6 @@ torchvision==0.15.2
 torchaudio==2.0.2
 astunparse
 opencv-contrib-python
-requests
 psutil
 rich
 xformers==0.0.20
